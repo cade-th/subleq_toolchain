@@ -7,21 +7,21 @@ def run(suite_name, test_data, test_func):
     for name, data in test_data.items():
         count += 1  
         try:
-            ok = test_func()
+            ok = test_func(name, data)
             if not ok:
                 success = False
         except Exception as err:
             print(f"Error in test {name}: {err}")
             success = False
         
-        if count == 0:
-            print(f"{suite_name}: No tests found")
-            return False
+    if count == 0:
+        print(f"{suite_name}: No tests found")
+        return False
 
-        if success:
-            print(f"Test {suite_name} TRUE")
-        else:
-            print(f"Test {suite_name} FAIL")
-            sys.exit(1)
+    if success:
+        print(f"Test {suite_name} PASS")
+    else:
+        print(f"Test {suite_name} FAIL")
+        sys.exit(1)
 
     return success
