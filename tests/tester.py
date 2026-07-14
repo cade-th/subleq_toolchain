@@ -19,9 +19,9 @@ def run(suite_name, test_data, test_func):
         return False
 
     if success:
-        print(f"Test {suite_name} PASS")
+        print(f"{suite_name} Tests: PASS")
     else:
-        print(f"Test {suite_name} FAIL")
+        print(f"{suite_name} Tests: FAIL")
         sys.exit(1)
 
     return success

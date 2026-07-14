@@ -28,6 +28,6 @@ def error_log(expected, received, string):
 if __name__ == "__main__":
     with open("tests/emu_tests/emu_tests.json", "r") as f:
         test_data = json.load(f)
-        run("Emulator Tests", test_data, emu_test)
+        run("Emulator", test_data, emu_test)
 
 
