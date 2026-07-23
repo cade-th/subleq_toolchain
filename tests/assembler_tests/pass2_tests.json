@@ -1,0 +1,159 @@
+{
+	"nothing": {
+		"input": {
+			"tokens": [
+				[
+					"number",
+					0
+				],
+				[
+					"number",
+					0
+				],
+				[
+					"number",
+					0
+				]
+			],
+			"sym_table": {},
+			"mnt": {},
+			"mdt": []
+		},
+		"output": {
+			"tokens": [
+				[
+					"number",
+					0
+				],
+				[
+					"number",
+					0
+				],
+				[
+					"number",
+					0
+				]
+			]
+		}
+	},
+	"label_1": {
+		"input": {
+			"tokens": [
+				[
+					"number",
+					0
+				],
+				[
+					"number",
+					0
+				],
+				[
+					"number",
+					0
+				]
+			],
+			"sym_table": {
+				"START": 0
+			},
+			"mnt": {},
+			"mdt": []
+		},
+		"output": {
+			"tokens": [
+				[
+					"number",
+					0
+				],
+				[
+					"number",
+					0
+				],
+				[
+					"number",
+					0
+				]
+			]
+		}
+	},
+	"label_2": {
+		"input": {
+			"tokens": [
+				[
+					"number",
+					0
+				],
+				[
+					"symbol",
+					"INOUT"
+				],
+				[
+					"number",
+					0
+				],
+				[
+					"number",
+					-3
+				]
+			],
+			"sym_table": {
+				"START": 0,
+				"INOUT": 3
+			},
+			"mnt": {},
+			"mdt": []
+		},
+		"output": {
+			"tokens": [
+				[
+					"number",
+					0
+				],
+				[
+					"number",
+					-3
+				],
+				[
+					"number",
+					0
+				],
+				[
+					"number",
+					-3
+				]
+			]
+		}
+	},
+	"macro_1": {
+		"input": {
+			"tokens": [
+				[
+					"symbol",
+					"one"
+				]
+			],
+			"sym_table": {},
+			"mnt": {
+				"one": {
+					"mdt_index": 0,
+					"parameters": []
+				}
+			},
+			"mdt": [
+				[
+					[
+						"number",
+						"two"
+					]
+				]
+			]
+		},
+		"output": {
+			"tokens": [
+				[
+					"number",
+					"two"
+				]
+			]
+		}
+	}
+}
