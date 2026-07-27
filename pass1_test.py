@@ -4,26 +4,30 @@ import json
  
 def pass1_test(test_name, data):
     print(f"Test {test_name}:")
-    success = False
+    success = True
 
     parser = Parser(data["input"]["tokens"]) 
     
     tokens, sym_table, mnt, mdt = parser.pass1()
 
-    if (
-        not check_data("tokens", data, tokens)
-        and not check_data("sym_table", data, sym_table)
-        and not check_data("mdt", data, mdt)
-        and not check_data("mnt", data, mnt)
-    ):
-        return success
-    
-    success = True
-    return success
+    if tokens != data["output"]["tokens"]:
+        error_log(data["output"]["tokens"], tokens, "tokens")
+        success = False
 
-def check_data(string, test_data, output):
-    if output != test_data["output"][string]:
-        error_log(test_data["output"][string], output, string) 
+    if sym_table != data["output"]["sym_table"]:
+        error_log(data["output"]["sym_table"], sym_table, "sym_table")
+        success = False
+
+    if mnt != data["output"]["mnt"]:
+        error_log(data["output"]["mnt"], mnt, "mnt")
+        success = False
+
+    if mdt != data["output"]["mdt"]:
+        error_log(data["output"]["mdt"], mdt, "mdt")
+        success = False
+
+
+    if not success:
         return False
     else:
         return True

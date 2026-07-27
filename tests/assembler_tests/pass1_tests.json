@@ -135,6 +135,75 @@
 			"mdt": []
 		}
 	},
+	"label_3": {
+		"input": {
+			"tokens": [
+				[
+					"label",
+					"START"
+				],
+				[
+					"number",
+					0
+				],
+				[
+					"symbol",
+					"INOUT"
+				],
+				[
+					"symbol",
+					"IDK"
+				],
+				[
+					"label",
+					"INOUT"
+				],
+				[
+					"number",
+					-1
+				],
+				[
+					"label",
+					"IDK"
+				],
+				[
+					"number",
+					-7
+				]
+			]
+		},
+		"output": {
+			"tokens": [
+				[
+					"number",
+					0
+				],
+				[
+					"symbol",
+					"INOUT"
+				],
+				[
+					"symbol",
+					"IDK"
+				],
+				[
+					"number",
+					-1
+				],
+				[
+					"number",
+					-7
+				]
+			],
+			"sym_table": {
+				"START": 0,
+				"INOUT": 3,
+				"IDK": 4
+			},
+			"mnt": {},
+			"mdt": []
+		}
+	},
 	"macro_1": {
 		"input": {
 			"tokens": [
@@ -181,8 +250,450 @@
 			"mdt": [
 				[
 					[
-						"number",
+						"symbol",
 						"two"
+					]
+				]
+			]
+		}
+	},
+	"macro_2": {
+		"input": {
+			"tokens": [
+				[
+					"hash",
+					"#"
+				],
+				[
+					"symbol",
+					"define"
+				],
+				[
+					"symbol",
+					"foo"
+				],
+				[
+					"RPAREN",
+					"("
+				],
+				[
+					"symbol",
+					"bar"
+				],
+				[
+					"LPAREN",
+					")"
+				],
+				[
+					"symbol",
+					"bar"
+				],
+				[
+					"symbol",
+					"endM"
+				],
+				[
+					"symbol",
+					"foo"
+				],
+				[
+					"RPAREN",
+					"("
+				],
+				[
+					"symbol",
+					"idk"
+				],
+				[
+					"LPAREN",
+					")"
+				]
+			]
+		},
+		"output": {
+			"tokens": [
+				[
+					"symbol",
+					"foo"
+				],
+				[
+					"RPAREN",
+					"("
+				],
+				[
+					"symbol",
+					"idk"
+				],
+				[
+					"LPAREN",
+					")"
+				]
+			],
+			"sym_table": {},
+			"mnt": {
+				"foo": {
+					"mdt_index": 0,
+					"parameters": [
+						[
+							"symbol",
+							"bar"
+						]
+					]
+				}
+			},
+			"mdt": [
+				[
+					[
+						"symbol",
+						"bar"
+					]
+				]
+			]
+		}
+	},
+	"macro_3": {
+		"input": {
+			"tokens": [
+				[
+					"hash",
+					"#"
+				],
+				[
+					"symbol",
+					"define"
+				],
+				[
+					"symbol",
+					"foo"
+				],
+				[
+					"RPAREN",
+					"("
+				],
+				[
+					"symbol",
+					"arg1"
+				],
+				[
+					"comma",
+					","
+				],
+				[
+					"symbol",
+					"arg2"
+				],
+				[
+					"comma",
+					","
+				],
+				[
+					"symbol",
+					"arg3"
+				],
+				[
+					"LPAREN",
+					")"
+				],
+				[
+					"symbol",
+					"mymom"
+				],
+				[
+					"symbol",
+					"arg1"
+				],
+				[
+					"symbol",
+					"arg2"
+				],
+				[
+					"symbol",
+					"arg3"
+				],
+				[
+					"symbol",
+					"endM"
+				],
+				[
+					"symbol",
+					"foo"
+				],
+				[
+					"RPAREN",
+					"("
+				],
+				[
+					"symbol",
+					"fi"
+				],
+				[
+					"comma",
+					","
+				],
+				[
+					"symbol",
+					"fye"
+				],
+				[
+					"comma",
+					","
+				],
+				[
+					"symbol",
+					"foe"
+				],
+				[
+					"LPAREN",
+					")"
+				]
+			]
+		},
+		"output": {
+			"tokens": [
+				[
+					"symbol",
+					"foo"
+				],
+				[
+					"RPAREN",
+					"("
+				],
+				[
+					"symbol",
+					"fi"
+				],
+				[
+					"comma",
+					","
+				],
+				[
+					"symbol",
+					"fye"
+				],
+				[
+					"comma",
+					","
+				],
+				[
+					"symbol",
+					"foe"
+				],
+				[
+					"LPAREN",
+					")"
+				]
+			],
+			"sym_table": {},
+			"mnt": {
+				"foo": {
+					"mdt_index": 0,
+					"parameters": [
+						[
+							"symbol",
+							"arg1"
+						],
+						[
+							"symbol",
+							"arg2"
+						],
+						[
+							"symbol",
+							"arg3"
+						]
+					]
+				}
+			},
+			"mdt": [
+				[
+					[
+						"symbol",
+						"mymom"
+					],
+					[
+						"symbol",
+						"arg1"
+					],
+					[
+						"symbol",
+						"arg2"
+					],
+					[
+						"symbol",
+						"arg3"
+					]
+				]
+			]
+		}
+	},
+	"full_src": {
+		"input": {
+			"tokens": [
+				[
+					"hash",
+					"#"
+				],
+				[
+					"symbol",
+					"define"
+				],
+				[
+					"symbol",
+					"foo"
+				],
+				[
+					"RPAREN",
+					"("
+				],
+				[
+					"symbol",
+					"arg1"
+				],
+				[
+					"comma",
+					","
+				],
+				[
+					"symbol",
+					"arg2"
+				],
+				[
+					"comma",
+					","
+				],
+				[
+					"symbol",
+					"arg3"
+				],
+				[
+					"LPAREN",
+					")"
+				],
+				[
+					"symbol",
+					"mymom"
+				],
+				[
+					"symbol",
+					"arg1"
+				],
+				[
+					"symbol",
+					"arg2"
+				],
+				[
+					"symbol",
+					"arg3"
+				],
+				[
+					"symbol",
+					"endM"
+				],
+				[
+					"symbol",
+					"foo"
+				],
+				[
+					"RPAREN",
+					"("
+				],
+				[
+					"symbol",
+					"fi"
+				],
+				[
+					"comma",
+					","
+				],
+				[
+					"symbol",
+					"fye"
+				],
+				[
+					"comma",
+					","
+				],
+				[
+					"symbol",
+					"foe"
+				],
+				[
+					"LPAREN",
+					")"
+				]
+			]
+		},
+		"output": {
+			"tokens": [
+				[
+					"symbol",
+					"foo"
+				],
+				[
+					"RPAREN",
+					"("
+				],
+				[
+					"symbol",
+					"fi"
+				],
+				[
+					"comma",
+					","
+				],
+				[
+					"symbol",
+					"fye"
+				],
+				[
+					"comma",
+					","
+				],
+				[
+					"symbol",
+					"foe"
+				],
+				[
+					"LPAREN",
+					")"
+				]
+			],
+			"sym_table": {},
+			"mnt": {
+				"foo": {
+					"mdt_index": 0,
+					"parameters": [
+						[
+							"symbol",
+							"arg1"
+						],
+						[
+							"symbol",
+							"arg2"
+						],
+						[
+							"symbol",
+							"arg3"
+						]
+					]
+				}
+			},
+			"mdt": [
+				[
+					[
+						"symbol",
+						"mymom"
+					],
+					[
+						"symbol",
+						"arg1"
+					],
+					[
+						"symbol",
+						"arg2"
+					],
+					[
+						"symbol",
+						"arg3"
 					]
 				]
 			]

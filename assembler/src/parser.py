@@ -2,7 +2,7 @@ class Parser:
     def __init__(self, tokens_in):
         self.tokens = tokens_in
         self.pos = 0
-        self.macro_cnt = 0
+        self.macro_cnt = -1
         self.pc = 0
     
     def pass1(self):
@@ -12,13 +12,15 @@ class Parser:
 
         while self.pos < len(self.tokens):
             tok_t = self.tokens[self.pos][0]
+            tok_val = self.tokens[self.pos][1]
             if tok_t == "label":
-                sym_table[self.tokens[self.pos][1]]= self.pc
-                self.pc += 1
+                sym_table[tok_val]= self.pc
                 del self.tokens[self.pos]
             elif tok_t == "hash":
-                mnt, mdt = self.record_macro(mnt, mdt)
+                mnt, mdt = self.record_macro(self.tokens,mnt, mdt)
+                # has to be a number here
             
+            self.pc+= 1
             self.pos+=1
 
         
@@ -27,26 +29,53 @@ class Parser:
 
         return self.tokens, sym_table, mnt, mdt
 
-    def record_macro(self, mnt, mdt):
+    def record_params(self):
+            params = []
+
+            if self.tokens[self.pos][0] != "RPAREN":
+                return params 
+
+            # move past the rparen
+            del self.tokens[self.pos]
+
+            while self.tokens[self.pos][0] != "LPAREN":
+                if self.tokens[self.pos][0] == "comma":
+                    del self.tokens[self.pos]
+                params.append(self.tokens[self.pos])
+                del self.tokens[self.pos] 
+
+            # move past lparen
+            del self.tokens[self.pos]
+
+            return params
+
+    def record_macro(self,tokens,mnt, mdt):
         self.macro_cnt += 1
 
         # go to macro name
         del self.tokens[self.pos]
         del self.tokens[self.pos]
+        macro_name = self.tokens[self.pos][1]
+        # go to either definition or parameters
+        del self.tokens[self.pos]
+        
         # record macro name
-        mnt[self.tokens[self.pos][1]] = {
+        mnt[macro_name] = {
             "mdt_index": self.macro_cnt,
-            "parameters": []
+            "parameters": self.record_params()
         }
 
-        # go to macro definition
-        del self.tokens[self.pos]
+        tok_t = self.tokens[self.pos][0]
+        tok_val = self.tokens[self.pos][1]
+
+        # print(tok_t)  
+        # print(tok_val)  
 
         macro_tokens = []
         # record macro contents
         while self.tokens[self.pos][1] != "endM":
-            tok_val = self.tokens[self.pos][0]
-            tok_t = self.tokens[self.pos][1]
+            tok_val = self.tokens[self.pos][1]
+            tok_t = self.tokens[self.pos][0]
 
 
             macro_tok = [tok_t, tok_val]
@@ -60,8 +89,7 @@ class Parser:
 
         return mnt, mdt
 
-
-
+    
     def pass2(self, tokens, sym_table, mnt, mdt):
         
         while self.pos < len(tokens):
