@@ -5,18 +5,14 @@ class Parser:
         self.macro_cnt = -1
         self.pc = 0
     
-    def pass1(self):
-        sym_table = {}
+    def macro_p1(self):
         mnt = {}
         mdt = []
 
         while self.pos < len(self.tokens):
             tok_t = self.tokens[self.pos][0]
             tok_val = self.tokens[self.pos][1]
-            if tok_t == "label":
-                sym_table[tok_val]= self.pc
-                del self.tokens[self.pos]
-            elif tok_t == "hash":
+            if tok_t == "hash":
                 mnt, mdt = self.record_macro(self.tokens,mnt, mdt)
                 # has to be a number here
             
@@ -27,7 +23,7 @@ class Parser:
         self.pos = 0
         self.pc = 0
 
-        return self.tokens, sym_table, mnt, mdt
+        return self.tokens, mnt, mdt
 
     def record_params(self):
             params = []
@@ -90,30 +86,61 @@ class Parser:
         return mnt, mdt
 
     
-    def pass2(self, tokens, sym_table, mnt, mdt):
+    def macro_p2(self, mnt, mdt):
         
-        while self.pos < len(tokens):
-            tok_val = tokens[self.pos][1]
-            tok_t = tokens[self.pos][0]
+        while self.pos < len(self.tokens):
+            tok_val = self.tokens[self.pos][1]
+            tok_t = self.tokens[self.pos][0]
             if tok_t == "symbol":
-                if tok_val in sym_table:
-                    address = sym_table[tok_val]
-                    tokens[self.pos] = ["number", tokens[address][1]]
-                elif tok_val in mnt:
+                if tok_val in mnt:
                     self.expand_macro(tok_val,mnt,mdt)
-                else:
-                    print("Unknown Symbol Found")
             self.pos+=1
 
-        return tokens
+        return self.tokens
 
     def expand_macro(self,mnt_key,mnt, mdt):
 
+        args = []
         del self.tokens[self.pos]
+        if self.tokens[self.pos] == "RPAREN":
+            args = self.collect_args()
+
+        print(args)
+
         
-        mdt_tokens = mnt[mnt_key]["mdt_index"]
-        for i in mdt[mdt_tokens]:
-            self.tokens.insert(self.pos,i)
+        mdt_index = mnt[mnt_key]["mdt_index"]
+        print("got here")
+        print(mnt[mnt_key]["params"])
+        params = mnt[mnt_key]
+
+        print(mdt[mdt_index])
+        print(params)
+
+        for i in range(0,mdt[mdt_index]):
+            for j in range(0, params):
+                if params and params[j] == mdt[mdt_index][i]: 
+                    self.tokens.insert(self.pos, args[0])
+                else:
+                    self.tokens.insert(self.pos, mdt[mdt_index][i])
+
+    def collect_args(self):
+        args = []
+        while self.tokens[self.pos][0] != "LPAREN":
+            if self.tokens[self.pos][0] == "comma":
+                del self.tokens[self.pos]
+            else:
+                args.append(self.tokens[self.pos])
+                del self.tokens[self.pos]
+        del self.tokens[self.pos]
+        return args
 
 
+    def p1_label(self):
+            sym_table = {}
+            print("TODO")
+            return self.tokens, sym_table
+
+    def p2_label(self, sym_table):
+            print("TODO")
+            return self.tokens
 

@@ -1,0 +1,170 @@
+{
+	"label_1": {
+		"input": {
+			"tokens": [
+				[
+					"label",
+					"START"
+				],
+				[
+					"number",
+					0
+				],
+				[
+					"number",
+					0
+				],
+				[
+					"number",
+					0
+				]
+			]
+		},
+		"output": {
+			"tokens": [
+				[
+					"number",
+					0
+				],
+				[
+					"number",
+					0
+				],
+				[
+					"number",
+					0
+				]
+			],
+			"sym_table": {
+				"START": 0
+			},
+			"mnt": {},
+			"mdt": []
+		}
+	},
+	"label_2": {
+		"input": {
+			"tokens": [
+				[
+					"label",
+					"START"
+				],
+				[
+					"number",
+					0
+				],
+				[
+					"number",
+					0
+				],
+				[
+					"number",
+					0
+				],
+				[
+					"label",
+					"INOUT"
+				],
+				[
+					"number",
+					-1
+				]
+			]
+		},
+		"output": {
+			"tokens": [
+				[
+					"number",
+					0
+				],
+				[
+					"number",
+					0
+				],
+				[
+					"number",
+					0
+				],
+				[
+					"number",
+					-1
+				]
+			],
+			"sym_table": {
+				"START": 0,
+				"INOUT": 3
+			},
+			"mnt": {},
+			"mdt": []
+		}
+	},
+	"label_3": {
+		"input": {
+			"tokens": [
+				[
+					"label",
+					"START"
+				],
+				[
+					"number",
+					0
+				],
+				[
+					"symbol",
+					"INOUT"
+				],
+				[
+					"symbol",
+					"IDK"
+				],
+				[
+					"label",
+					"INOUT"
+				],
+				[
+					"number",
+					-1
+				],
+				[
+					"label",
+					"IDK"
+				],
+				[
+					"number",
+					-7
+				]
+			]
+		},
+		"output": {
+			"tokens": [
+				[
+					"number",
+					0
+				],
+				[
+					"symbol",
+					"INOUT"
+				],
+				[
+					"symbol",
+					"IDK"
+				],
+				[
+					"number",
+					-1
+				],
+				[
+					"number",
+					-7
+				]
+			],
+			"sym_table": {
+				"START": 0,
+				"INOUT": 3,
+				"IDK": 4
+			},
+			"mnt": {},
+			"mdt": []
+		}
+	}
+}

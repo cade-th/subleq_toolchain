@@ -1,41 +1,4 @@
 {
-	"nothing": {
-		"input": {
-			"tokens": [
-				[
-					"number",
-					0
-				],
-				[
-					"number",
-					0
-				],
-				[
-					"number",
-					0
-				]
-			],
-			"sym_table": {},
-			"mnt": {},
-			"mdt": []
-		},
-		"output": {
-			"tokens": [
-				[
-					"number",
-					0
-				],
-				[
-					"number",
-					0
-				],
-				[
-					"number",
-					0
-				]
-			]
-		}
-	},
 	"label_1": {
 		"input": {
 			"tokens": [
@@ -119,39 +82,6 @@
 				[
 					"number",
 					-3
-				]
-			]
-		}
-	},
-	"macro_1": {
-		"input": {
-			"tokens": [
-				[
-					"symbol",
-					"one"
-				]
-			],
-			"sym_table": {},
-			"mnt": {
-				"one": {
-					"mdt_index": 0,
-					"parameters": []
-				}
-			},
-			"mdt": [
-				[
-					[
-						"number",
-						"two"
-					]
-				]
-			]
-		},
-		"output": {
-			"tokens": [
-				[
-					"number",
-					"two"
 				]
 			]
 		}
