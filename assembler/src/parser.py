@@ -5,6 +5,11 @@ class Parser:
         self.macro_cnt = -1
         self.pc = 0
 
+    def parse(self):
+        self.tokens = self.preproc()
+        self.tokens = self.resolve_labels()
+        return self.tokens
+
     def preproc(self):
         self.tokens, mnt, mdt = self.macro_p1()
         self.tokens = self.macro_p2(mnt, mdt)
@@ -151,8 +156,9 @@ class Parser:
 
     def p2_label(self, sym_table):
             while self.pos < len(self.tokens):
-                if self.tokens[self.pos][1] in sym_table:
-                    address = sym_table[self.tokens[self.pos][1]]
+                tok_v = self.tokens[self.pos][1]
+                if tok_v in sym_table:
+                    address = sym_table[tok_v]
                     self.tokens[self.pos] = ["number", self.tokens[address][1]]
                 self.pos+=1
             return self.tokens
