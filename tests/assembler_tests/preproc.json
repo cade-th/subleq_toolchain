@@ -1,40 +1,4 @@
 {
-	"nothing": {
-		"input": {
-			"tokens": [
-				[
-					"number",
-					0
-				],
-				[
-					"number",
-					0
-				],
-				[
-					"number",
-					0
-				]
-			]
-		},
-		"output": {
-			"tokens": [
-				[
-					"number",
-					0
-				],
-				[
-					"number",
-					0
-				],
-				[
-					"number",
-					0
-				]
-			],
-			"mnt": {},
-			"mdt": []
-		}
-	},
 	"macro_1": {
 		"input": {
 			"tokens": [
@@ -48,11 +12,11 @@
 				],
 				[
 					"symbol",
-					"one"
+					"foo"
 				],
 				[
 					"symbol",
-					"two"
+					"bar"
 				],
 				[
 					"symbol",
@@ -60,7 +24,11 @@
 				],
 				[
 					"symbol",
-					"one"
+					"foo"
+				],
+				[
+					"number",
+					0
 				]
 			]
 		},
@@ -68,21 +36,11 @@
 			"tokens": [
 				[
 					"symbol",
-					"one"
-				]
-			],
-			"mnt": {
-				"one": {
-					"mdt_index": 0,
-					"params": []
-				}
-			},
-			"mdt": [
+					"bar"
+				],
 				[
-					[
-						"symbol",
-						"two"
-					]
+					"number",
+					0
 				]
 			]
 		}
@@ -108,7 +66,7 @@
 				],
 				[
 					"symbol",
-					"bar"
+					"arg"
 				],
 				[
 					"LPAREN",
@@ -116,7 +74,7 @@
 				],
 				[
 					"symbol",
-					"bar"
+					"arg"
 				],
 				[
 					"symbol",
@@ -132,7 +90,7 @@
 				],
 				[
 					"symbol",
-					"idk"
+					"bar"
 				],
 				[
 					"LPAREN",
@@ -144,38 +102,7 @@
 			"tokens": [
 				[
 					"symbol",
-					"foo"
-				],
-				[
-					"RPAREN",
-					"("
-				],
-				[
-					"symbol",
-					"idk"
-				],
-				[
-					"LPAREN",
-					")"
-				]
-			],
-			"mnt": {
-				"foo": {
-					"mdt_index": 0,
-					"params": [
-						[
-							"symbol",
-							"bar"
-						]
-					]
-				}
-			},
-			"mdt": [
-				[
-					[
-						"symbol",
-						"bar"
-					]
+					"bar"
 				]
 			]
 		}
@@ -194,6 +121,66 @@
 				[
 					"symbol",
 					"foo"
+				],
+				[
+					"RPAREN",
+					"("
+				],
+				[
+					"symbol",
+					"arg1"
+				],
+				[
+					"comma",
+					","
+				],
+				[
+					"symbol",
+					"arg2"
+				],
+				[
+					"comma",
+					","
+				],
+				[
+					"symbol",
+					"arg3"
+				],
+				[
+					"LPAREN",
+					")"
+				],
+				[
+					"symbol",
+					"urmom"
+				],
+				[
+					"symbol",
+					"arg1"
+				],
+				[
+					"symbol",
+					"arg2"
+				],
+				[
+					"symbol",
+					"arg3"
+				],
+				[
+					"symbol",
+					"endM"
+				],
+				[
+					"hash",
+					"#"
+				],
+				[
+					"symbol",
+					"define"
+				],
+				[
+					"symbol",
+					"bar"
 				],
 				[
 					"RPAREN",
@@ -253,7 +240,7 @@
 				],
 				[
 					"symbol",
-					"fi"
+					"one"
 				],
 				[
 					"comma",
@@ -261,7 +248,7 @@
 				],
 				[
 					"symbol",
-					"fye"
+					"two"
 				],
 				[
 					"comma",
@@ -269,7 +256,39 @@
 				],
 				[
 					"symbol",
-					"foe"
+					"three"
+				],
+				[
+					"LPAREN",
+					")"
+				],
+				[
+					"symbol",
+					"bar"
+				],
+				[
+					"RPAREN",
+					"("
+				],
+				[
+					"symbol",
+					"one"
+				],
+				[
+					"comma",
+					","
+				],
+				[
+					"symbol",
+					"two"
+				],
+				[
+					"comma",
+					","
+				],
+				[
+					"symbol",
+					"three"
 				],
 				[
 					"LPAREN",
@@ -281,79 +300,40 @@
 			"tokens": [
 				[
 					"symbol",
-					"foo"
-				],
-				[
-					"RPAREN",
-					"("
+					"urmom"
 				],
 				[
 					"symbol",
-					"fi"
-				],
-				[
-					"comma",
-					","
+					"one"
 				],
 				[
 					"symbol",
-					"fye"
-				],
-				[
-					"comma",
-					","
+					"two"
 				],
 				[
 					"symbol",
-					"foe"
+					"three"
 				],
 				[
-					"LPAREN",
-					")"
-				]
-			],
-			"mnt": {
-				"foo": {
-					"mdt_index": 0,
-					"params": [
-						[
-							"symbol",
-							"arg1"
-						],
-						[
-							"symbol",
-							"arg2"
-						],
-						[
-							"symbol",
-							"arg3"
-						]
-					]
-				}
-			},
-			"mdt": [
+					"symbol",
+					"mymom"
+				],
 				[
-					[
-						"symbol",
-						"mymom"
-					],
-					[
-						"symbol",
-						"arg1"
-					],
-					[
-						"symbol",
-						"arg2"
-					],
-					[
-						"symbol",
-						"arg3"
-					]
+					"symbol",
+					"one"
+				],
+				[
+					"symbol",
+					"two"
+				],
+				[
+					"symbol",
+					"three"
 				]
 			]
 		}
 	},
-	"two_macros": {
+	"macro_and_label_1": {
 		"input": {
 			"tokens": [
 				[
@@ -541,156 +521,33 @@
 					")"
 				],
 				[
+					"symbol",
+					"INOUT"
+				],
+				[
+					"symbol",
+					"IDK"
+				],
+				[
+					"label",
+					"INOUT:"
+				],
+				[
 					"number",
-					0
+					"-1"
+				],
+				[
+					"label",
+					"IDK:"
+				],
+				[
+					"number",
+					"-2"
 				]
 			]
 		},
 		"output": {
-			"tokens": [
-				[
-					"symbol",
-					"foo"
-				],
-				[
-					"RPAREN",
-					"("
-				],
-				[
-					"symbol",
-					"one"
-				],
-				[
-					"comma",
-					","
-				],
-				[
-					"symbol",
-					"two"
-				],
-				[
-					"comma",
-					","
-				],
-				[
-					"symbol",
-					"three"
-				],
-				[
-					"LPAREN",
-					")"
-				],
-				[
-					"symbol",
-					"bar"
-				],
-				[
-					"RPAREN",
-					"("
-				],
-				[
-					"symbol",
-					"one"
-				],
-				[
-					"comma",
-					","
-				],
-				[
-					"symbol",
-					"two"
-				],
-				[
-					"comma",
-					","
-				],
-				[
-					"symbol",
-					"three"
-				],
-				[
-					"LPAREN",
-					")"
-				],
-				[
-					"number",
-					0
-				]
-			],
-			"mnt": {
-				"foo": {
-					"mdt_index": 0,
-					"params": [
-						[
-							"symbol",
-							"arg1"
-						],
-						[
-							"symbol",
-							"arg2"
-						],
-						[
-							"symbol",
-							"arg3"
-						]
-					]
-				},
-				"bar": {
-					"mdt_index": 1,
-					"params": [
-						[
-							"symbol",
-							"arg1"
-						],
-						[
-							"symbol",
-							"arg2"
-						],
-						[
-							"symbol",
-							"arg3"
-						]
-					]
-				}
-			},
-			"mdt": [
-				[
-					[
-						"symbol",
-						"urmom"
-					],
-					[
-						"symbol",
-						"arg1"
-					],
-					[
-						"symbol",
-						"arg2"
-					],
-					[
-						"symbol",
-						"arg3"
-					]
-				],
-				[
-					[
-						"symbol",
-						"mymom"
-					],
-					[
-						"symbol",
-						"arg1"
-					],
-					[
-						"symbol",
-						"arg2"
-					],
-					[
-						"symbol",
-						"arg3"
-					]
-				]
-			]
+			"tokens": []
 		}
 	}
 }

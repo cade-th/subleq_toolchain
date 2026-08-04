@@ -1,0 +1,3 @@
+#define foo(arg) arg endM
+
+foo(bar)

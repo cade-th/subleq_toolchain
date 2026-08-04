@@ -7,6 +7,7 @@ token_t = [
     ["symbol", r'\w+'],
     ["RPAREN", r'\('],
     ["LPAREN", r'\)'],
+    ["comma", r','],
     ["whitespace", r'\s+']
 ]
 

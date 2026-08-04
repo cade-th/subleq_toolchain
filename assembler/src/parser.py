@@ -4,6 +4,12 @@ class Parser:
         self.pos = 0
         self.macro_cnt = -1
         self.pc = 0
+
+    def preproc(self):
+        self.tokens, mnt, mdt = self.macro_p1()
+        self.tokens = self.macro_p2(mnt, mdt)
+        self.pos = 0
+        return self.tokens
     
     def macro_p1(self):
         mnt = {}
@@ -14,7 +20,7 @@ class Parser:
             tok_val = self.tokens[self.pos][1]
             if tok_t == "hash":
                 mnt, mdt = self.record_macro(self.tokens,mnt, mdt)
-                # has to be a number here
+                self.pos-=1
             
             self.pc+= 1
             self.pos+=1
@@ -58,7 +64,7 @@ class Parser:
         # record macro name
         mnt[macro_name] = {
             "mdt_index": self.macro_cnt,
-            "parameters": self.record_params()
+            "params": self.record_params()
         }
 
         tok_t = self.tokens[self.pos][0]
@@ -102,29 +108,24 @@ class Parser:
 
         args = []
         del self.tokens[self.pos]
-        if self.tokens[self.pos] == "RPAREN":
+
+        if self.tokens[self.pos][0] == "RPAREN":
             args = self.collect_args()
 
-        print(args)
-
-        
         mdt_index = mnt[mnt_key]["mdt_index"]
-        print("got here")
-        print(mnt[mnt_key]["params"])
-        params = mnt[mnt_key]
+        params = mnt[mnt_key]["params"]
 
-        print(mdt[mdt_index])
-        print(params)
+        # replace parameters with arguments
+        for i in range(0,len(mdt[mdt_index])):
+            for j in range(0,len(params)):
+                if mdt[mdt_index][i] == params[j]:
+                    mdt[mdt_index][i] = args[j]
 
-        for i in range(0,mdt[mdt_index]):
-            for j in range(0, params):
-                if params and params[j] == mdt[mdt_index][i]: 
-                    self.tokens.insert(self.pos, args[0])
-                else:
-                    self.tokens.insert(self.pos, mdt[mdt_index][i])
+        self.tokens[self.pos:self.pos] = mdt[mdt_index]
 
     def collect_args(self):
         args = []
+        del self.tokens[self.pos]
         while self.tokens[self.pos][0] != "LPAREN":
             if self.tokens[self.pos][0] == "comma":
                 del self.tokens[self.pos]
@@ -132,15 +133,34 @@ class Parser:
                 args.append(self.tokens[self.pos])
                 del self.tokens[self.pos]
         del self.tokens[self.pos]
+        
         return args
 
 
     def p1_label(self):
             sym_table = {}
-            print("TODO")
+
+            while self.pos < len(self.tokens):
+                if self.tokens[self.pos][0] == "label":
+                    sym_table[self.tokens[self.pos][1]] = self.pc
+                    del self.tokens[self.pos]
+                
+                self.pos+=1
+                self.pc+=1
             return self.tokens, sym_table
 
     def p2_label(self, sym_table):
-            print("TODO")
+            while self.pos < len(self.tokens):
+                if self.tokens[self.pos][1] in sym_table:
+                    address = sym_table[self.tokens[self.pos][1]]
+                    self.tokens[self.pos] = ["number", self.tokens[address][1]]
+                self.pos+=1
             return self.tokens
 
+
+    def resolve_labels(self):
+        self.tokens, sym_table = self.p1_label()
+        self.pos = 0
+        self.pc = 0
+        self.tokens = self.p2_label(sym_table)
+        return self.tokens

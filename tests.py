@@ -10,7 +10,7 @@ RESET = "\033[0m"
 
 from lexer_test import lexer
 from emu_test import emu
-from macros_test import p1_macro, p2_macro
+from macros_test import p1_macro, p2_macro, preproc
 from labels_test import p1_label, p2_label
 
 def run(suite_name, test_data, test_func):
@@ -34,8 +34,8 @@ def run(suite_name, test_data, test_func):
     if success:
         print(f"{suite_name} Tests: {GREEN}PASS{RESET}")
     else:
-        print(f"{suite_name} Tests: {RED}FAIL{RESET}")
         print("".join(errors))
+        print(f"{suite_name} Tests: {RED}FAIL{RESET}")
         sys.exit(1)
 
     return success
@@ -46,7 +46,8 @@ test_function_dict = {
     "p1_macro": p1_macro,
     "p2_macro": p2_macro,
     "p1_label": p1_label,
-    "p2_label": p2_label
+    "p2_label": p2_label,
+    "preproc": preproc,
 }
 
 def run_all_tests():
@@ -67,7 +68,17 @@ def run_all_tests():
             test_data = json.load(data)
             run("p2 macro", test_data, test_function_dict["p2_macro"])
 
+    with open("./tests/assembler_tests/preproc.json", "r") as data:
+            test_data = json.load(data)
+            run("preproc", test_data, test_function_dict["preproc"])
 
+    with open("./tests/assembler_tests/p1_label.json", "r") as data:
+            test_data = json.load(data)
+            run("label_p1", test_data, test_function_dict["p1_label"])
+
+    with open("./tests/assembler_tests/p2_label.json", "r") as data:
+            test_data = json.load(data)
+            run("label_p2", test_data, test_function_dict["p2_label"])
 
 
 if __name__ == "__main__":
