@@ -319,5 +319,55 @@
 				]
 			]
 		}
+	},
+	"nested_macros_1": {
+		"input": {
+			"tokens": [
+				[
+					"symbol",
+					"idk"
+				],
+				[
+					"number",
+					0
+				]
+			],
+			"mnt": {
+				"foo": {
+					"mdt_index": 0,
+					"params": []
+				},
+				"idk": {
+					"mdt_index": 1,
+					"params": []
+				}
+			},
+			"mdt": [
+				[
+					[
+						"symbol",
+						"bar"
+					]
+				],
+				[
+					[
+						"symbol",
+						"foo"
+					]
+				]
+			]
+		},
+		"output": {
+			"tokens": [
+				[
+					"symbol",
+					"bar"
+				],
+				[
+					"number",
+					0
+				]
+			]
+		}
 	}
 }

@@ -1,3 +1,5 @@
+import copy
+
 class Parser:
     def __init__(self, tokens_in):
         self.tokens = tokens_in
@@ -15,7 +17,14 @@ class Parser:
         self.tokens = self.macro_p2(mnt, mdt)
         self.pos = 0
         return self.tokens
-    
+
+    def resolve_labels(self):
+        self.tokens, sym_table = self.p1_label()
+        self.pos = 0
+        self.pc = 0
+        self.tokens = self.p2_label(sym_table)
+        return self.tokens
+
     def macro_p1(self):
         mnt = {}
         mdt = []
@@ -98,17 +107,28 @@ class Parser:
 
     
     def macro_p2(self, mnt, mdt):
-        
-        while self.pos < len(self.tokens):
-            tok_val = self.tokens[self.pos][1]
-            tok_t = self.tokens[self.pos][0]
-            if tok_t == "symbol":
-                if tok_val in mnt:
-                    self.expand_macro(tok_val,mnt,mdt)
-            self.pos+=1
+
+        changed = True
+
+        while changed:
+            changed = False
+            self.pos = 0
+
+            while self.pos < len(self.tokens):
+
+                tok_t = self.tokens[self.pos][0]
+                tok_val = self.tokens[self.pos][1]
+
+                if (tok_t == "symbol" and
+                        tok_val in mnt):
+
+                    self.expand_macro(tok_val, mnt, mdt)
+                    changed = True
+                else:
+                    self.pos += 1
 
         return self.tokens
-
+    
     def expand_macro(self,mnt_key,mnt, mdt):
 
         args = []
@@ -117,16 +137,16 @@ class Parser:
         if self.tokens[self.pos][0] == "RPAREN":
             args = self.collect_args()
 
-        mdt_index = mnt[mnt_key]["mdt_index"]
         params = mnt[mnt_key]["params"]
+        body = copy.deepcopy(mdt[mnt[mnt_key]["mdt_index"]])
 
-        # replace parameters with arguments
-        for i in range(0,len(mdt[mdt_index])):
-            for j in range(0,len(params)):
-                if mdt[mdt_index][i] == params[j]:
-                    mdt[mdt_index][i] = args[j]
+        # substitute parameters
+        for i, tok in enumerate(body):
+            for j, param in enumerate(params):
+                if tok == param:
+                    body[i] = args[j]
 
-        self.tokens[self.pos:self.pos] = mdt[mdt_index]
+        self.tokens[self.pos:self.pos] = body
 
     def collect_args(self):
         args = []
@@ -163,10 +183,3 @@ class Parser:
                 self.pos+=1
             return self.tokens
 
-
-    def resolve_labels(self):
-        self.tokens, sym_table = self.p1_label()
-        self.pos = 0
-        self.pc = 0
-        self.tokens = self.p2_label(sym_table)
-        return self.tokens

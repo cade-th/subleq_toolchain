@@ -1,7 +1,7 @@
 from assembler.src.parser import Parser
 from test_utils import error_log
 
-def parser_test(test_name, data):
+def parser(test_name, data):
     # print(f"Test {test_name}:")
     success = False
 

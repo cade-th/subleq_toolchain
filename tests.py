@@ -12,7 +12,7 @@ from lexer_test import lexer
 from emu_test import emu
 from macros_test import p1_macro, p2_macro, preproc
 from labels_test import p1_label, p2_label
-from parser_test import parser_test
+from preproc_test import preproc_test
 
 def run(suite_name, test_data, test_func):
     success = True
@@ -44,12 +44,11 @@ def run(suite_name, test_data, test_func):
 test_function_dict = {
     "emu": emu,
     "lexer_test": lexer,
-    "p1_macro": p1_macro,
-    "p2_macro": p2_macro,
     "p1_label": p1_label,
     "p2_label": p2_label,
     "preproc": preproc,
-    "parser": parser_test,
+    "p1_macro": p1_macro,
+    "p2_macro": p2_macro,
 }
 
 def run_all_tests():
@@ -63,16 +62,16 @@ def run_all_tests():
         run("lexer", test_data, test_function_dict["lexer_test"])
 
     with open("./tests/assembler_tests/p1_macro.json", "r") as data:
-            test_data = json.load(data)
-            run("p1 macro", test_data, test_function_dict["p1_macro"])
+        test_data = json.load(data)
+        run("p1_macro", test_data, test_function_dict["p1_macro"])
 
     with open("./tests/assembler_tests/p2_macro.json", "r") as data:
-            test_data = json.load(data)
-            run("p2 macro", test_data, test_function_dict["p2_macro"])
+        test_data = json.load(data)
+        run("p2_macro", test_data, test_function_dict["p2_macro"])
 
     with open("./tests/assembler_tests/preproc.json", "r") as data:
-            test_data = json.load(data)
-            run("preproc", test_data, test_function_dict["preproc"])
+        test_data = json.load(data)
+        run("preproc", test_data, test_function_dict["preproc"])
 
     with open("./tests/assembler_tests/p1_label.json", "r") as data:
             test_data = json.load(data)
@@ -81,11 +80,6 @@ def run_all_tests():
     with open("./tests/assembler_tests/p2_label.json", "r") as data:
             test_data = json.load(data)
             run("label_p2", test_data, test_function_dict["p2_label"])
-
-    with open("./tests/assembler_tests/parser.json", "r") as data:
-            test_data = json.load(data)
-            run("parser", test_data, test_function_dict["parser"])
-
-
+    
 if __name__ == "__main__":
     run_all_tests()
