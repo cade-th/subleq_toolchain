@@ -369,5 +369,288 @@
 				]
 			]
 		}
+	},
+	"nested_macros_2": {
+		"input": {
+			"tokens": [
+				[
+					"symbol",
+					"urmom"
+				],
+				[
+					"number",
+					0
+				]
+			],
+			"mnt": {
+				"foo": {
+					"mdt_index": 0,
+					"params": []
+				},
+				"idk": {
+					"mdt_index": 1,
+					"params": []
+				},
+				"urmom": {
+					"mdt_index": 2,
+					"params": []
+				}
+			},
+			"mdt": [
+				[
+					[
+						"symbol",
+						"bar"
+					]
+				],
+				[
+					[
+						"symbol",
+						"foo"
+					]
+				],
+				[
+					[
+						"symbol",
+						"idk"
+					]
+				]
+			]
+		},
+		"output": {
+			"tokens": [
+				[
+					"symbol",
+					"bar"
+				],
+				[
+					"number",
+					0
+				]
+			]
+		}
+	},
+	"nested_macros_3": {
+		"input": {
+			"tokens": [
+				[
+					"symbol",
+					"idk"
+				],
+				[
+					"RPAREN",
+					"("
+				],
+				[
+					"symbol",
+					"lol"
+				],
+				[
+					"comma",
+					","
+				],
+				[
+					"symbol",
+					"lol"
+				],
+				[
+					"comma",
+					","
+				],
+				[
+					"symbol",
+					"lol"
+				],
+				[
+					"LPAREN",
+					")"
+				],
+				[
+					"number",
+					0
+				]
+			],
+			"mnt": {
+				"foo": {
+					"mdt_index": 0,
+					"params": [
+						[
+							"symbol",
+							"arg1"
+						],
+						[
+							"symbol",
+							"arg2"
+						],
+						[
+							"symbol",
+							"arg3"
+						]
+					]
+				},
+				"bar": {
+					"mdt_index": 1,
+					"params": [
+						[
+							"symbol",
+							"arg1"
+						],
+						[
+							"symbol",
+							"arg2"
+						],
+						[
+							"symbol",
+							"arg3"
+						]
+					]
+				},
+				"idk": {
+					"mdt_index": 2,
+					"params": [
+						[
+							"symbol",
+							"arg1"
+						],
+						[
+							"symbol",
+							"arg2"
+						],
+						[
+							"symbol",
+							"arg3"
+						]
+					]
+				}
+			},
+			"mdt": [
+				[
+					[
+						"symbol",
+						"no"
+					],
+					[
+						"symbol",
+						"arg1"
+					],
+					[
+						"symbol",
+						"arg2"
+					],
+					[
+						"symbol",
+						"arg3"
+					]
+				],
+				[
+					[
+						"symbol",
+						"ok"
+					],
+					[
+						"symbol",
+						"foo"
+					],
+					[
+						"RPAREN",
+						"("
+					],
+					[
+						"symbol",
+						"arg1"
+					],
+					[
+						"comma",
+						","
+					],
+					[
+						"symbol",
+						"arg2"
+					],
+					[
+						"comma",
+						","
+					],
+					[
+						"symbol",
+						"arg3"
+					],
+					[
+						"LPAREN",
+						")"
+					]
+				],
+				[
+					[
+						"symbol",
+						"ow"
+					],
+					[
+						"symbol",
+						"bar"
+					],
+					[
+						"RPAREN",
+						"("
+					],
+					[
+						"symbol",
+						"arg1"
+					],
+					[
+						"comma",
+						","
+					],
+					[
+						"symbol",
+						"arg2"
+					],
+					[
+						"comma",
+						","
+					],
+					[
+						"symbol",
+						"arg3"
+					],
+					[
+						"LPAREN",
+						")"
+					]
+				]
+			]
+		},
+		"output": {
+			"tokens": [
+				[
+					"symbol",
+					"ow"
+				],
+				[
+					"symbol",
+					"ok"
+				],
+				[
+					"symbol",
+					"no"
+				],
+				[
+					"symbol",
+					"lol"
+				],
+				[
+					"symbol",
+					"lol"
+				],
+				[
+					"symbol",
+					"lol"
+				],
+				[
+					"number",
+					0
+				]
+			]
+		}
 	}
 }

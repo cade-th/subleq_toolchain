@@ -264,5 +264,83 @@
 				]
 			]
 		}
+	},
+	"nested_macros_2": {
+		"input": {
+			"tokens": [
+				[
+					"hash",
+					"#"
+				],
+				[
+					"symbol",
+					"define"
+				],
+				[
+					"symbol",
+					"foo"
+				],
+				[
+					"symbol",
+					"bar"
+				],
+				[
+					"symbol",
+					"endM"
+				],
+				[
+					"hash",
+					"#"
+				],
+				[
+					"symbol",
+					"define"
+				],
+				[
+					"symbol",
+					"idk"
+				],
+				[
+					"symbol",
+					"foo"
+				],
+				[
+					"symbol",
+					"endM"
+				],
+				[
+					"hash",
+					"#"
+				],
+				[
+					"symbol",
+					"define"
+				],
+				[
+					"symbol",
+					"urmom"
+				],
+				[
+					"symbol",
+					"idk"
+				],
+				[
+					"symbol",
+					"endM"
+				],
+				[
+					"symbol",
+					"urmom"
+				]
+			]
+		},
+		"output": {
+			"tokens": [
+				[
+					"symbol",
+					"bar"
+				]
+			]
+		}
 	}
 }

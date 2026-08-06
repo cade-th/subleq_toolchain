@@ -23,7 +23,6 @@ def preproc(test_name, data):
 
  
 def p2_macro(test_name, data):
-    # print(f"Test {test_name}:")
     success = False
 
     parser = Parser(data["input"]["tokens"]) 

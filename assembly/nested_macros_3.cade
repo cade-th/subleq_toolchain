@@ -1,0 +1,6 @@
+#define foo(arg1, arg2, arg3) no arg1 arg2 arg3 endM
+#define bar(arg1, arg2, arg3) ok foo(arg1, arg2, arg3) endM
+#define idk(arg1, arg2, arg3) ow bar(arg1, arg2, arg3) endM
+
+idk(lol, lol, lol)
+
